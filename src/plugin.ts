@@ -87,6 +87,7 @@ export function svgrComponentPlugin(
 
 
 
+
 interface CompileSvg {
   svgImportString: string,
   svgrComponentOptions: SvgrOpts,
