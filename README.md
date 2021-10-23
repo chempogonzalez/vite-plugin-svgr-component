@@ -3,7 +3,7 @@ Vite extensible zero-config plugin to import SVG and transform it to a React com
 
 ## 🚀 Features
 - 👌 **Zero-config**: built-in default configs for common use cases
-- ✅ **Easy import**: it's not necessary to add aditional `?component` string or import as `import { ReactComponent }` to use it as a component
+- ✅ **Easy import**: it's not necessary to add aditional `?component` string or import it as `import {ReactComponent}` to use it as a component
 - ⚒️ **Configurable**: full ability to customize the behavior of the plugin
 - ⚛️ **Transformed with SVGR**: [svgr](https://react-svgr.com/) library based to transform the svg to a React Component
 - ⚡ **Optimized SVG**: Optimized with [SVGO](https://github.com/svg/svgo) plugin
