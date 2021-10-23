@@ -1,5 +1,8 @@
 # Vite svgr component plugin
-Vite zero-config customizable plugin to import SVG and transform it to a React component in a simple way.
+
+<img src="https://img.shields.io/npm/v/vite-plugin-svgr-component?style=for-the-badge" />
+
+> Vite zero-config customizable plugin to import SVG and transform it to a React component in a simple way.
 
 ## 🚀 Features
 - 👌 **Zero-config**: built-in default configs for common use cases
