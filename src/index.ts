@@ -117,4 +117,4 @@ export interface SvgrPluginOptions {
   keepEmittedAssets: boolean,
 }
 
-export { svgrComponentPlugin } from './plugin';
+export { svgrComponent } from './plugin';

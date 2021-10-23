@@ -19,7 +19,7 @@ const DEFAULT_SVGR_OPTIONS: SvgrOpts = {
 /**
  * ===========================  MAIN PLUGIN FUNCTION  =============================================
  */
-export function svgrComponentPlugin(
+export function svgrComponent(
   {
     importStringPattern = '*.svg*',
     svgrOptions = DEFAULT_SVGR_OPTIONS,
