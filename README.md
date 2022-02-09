@@ -92,6 +92,13 @@ export default {
 }
 ```
 
+## Use with Typescript
+If you use the plugin in a Typescript project you will `need the reference to the type definitions` to allow to use "title" and "titleId" in your SVGComponent
+```ts
+/* vite-env.d.ts (file) */
+/// <reference types="vite-plugin-svgr-component/client" />
+```
+
 
 
 ## 🔑 Full config

@@ -1,19 +1,23 @@
 import fs from 'fs';
-import svgr from '@svgr/core';
+import { transform as svgr } from '@svgr/core';
 import m from 'micromatch';
 import { transform } from 'esbuild';
 import type { Loader } from 'esbuild';
 import type { PluginOption, TransformResult } from 'vite';
-import type { SvgrPluginOptions, SvgrOpts } from './index';
-
+import type { SvgrPluginOptions, SvgrOptions } from './index';
 
 /** Default optimized configuration */
-const DEFAULT_SVGR_OPTIONS: SvgrOpts = {
+const DEFAULT_SVGR_OPTIONS: SvgrOptions = {
   memo: true,
   typescript: true,
   svgo: true,
   titleProp: true,
+  exportType: 'default',
 };
+
+/** Remove './' in import url to match properly with micromatch */
+const format = (str: string) => str.replace(/^\.\//, '')
+
 
 
 /**
@@ -21,11 +25,11 @@ const DEFAULT_SVGR_OPTIONS: SvgrOpts = {
  */
 export function svgrComponent(
   {
-    importStringPattern = '*.svg*',
+    importStringPattern = '**/*.svg',
     svgrOptions = DEFAULT_SVGR_OPTIONS,
     typescript = true,
     keepEmittedAssets = false,
-  }: SvgrPluginOptions
+  }: Partial<SvgrPluginOptions> | undefined = {}
 ): PluginOption {
   const transformedSvgsCache = new Map<string, TransformResult>();
 
@@ -39,7 +43,7 @@ export function svgrComponent(
     async transform(_, svgImportString) {
       /** -------------------- Guards ------------------------------------------------- */
       const isValidSvg = svgImportString.includes('.svg')
-                        && m.isMatch(svgImportString, importStringPattern);
+                        && m.isMatch(svgImportString, importStringPattern, { format } );
 
       if (!isValidSvg) return null;
 
@@ -54,6 +58,7 @@ export function svgrComponent(
         ...DEFAULT_SVGR_OPTIONS,
         ...(svgrOptions || {}),
       };
+
 
       const code = await compileSvg({ svgImportString, svgrComponentOptions, transformLoader });
 
@@ -90,7 +95,7 @@ export function svgrComponent(
 
 interface CompileSvg {
   svgImportString: string,
-  svgrComponentOptions: SvgrOpts,
+  svgrComponentOptions: SvgrOptions,
   transformLoader: Loader,
 }
 
