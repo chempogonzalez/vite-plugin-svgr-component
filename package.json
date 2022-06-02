@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-svgr-component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "⚛️ Vite zero-config customizable plugin to import SVG and transform it to a React component in a simple way",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -17,7 +17,14 @@
     "type": "git",
     "url": "git+https://github.com/chempogonzalez/vite-plugin-svgr-component.git"
   },
-  "keywords": [],
+  "keywords": [
+    "vite",
+    "plugin",
+    "svgr",
+    "react",
+    "svg",
+    "component"
+  ],
   "author": "Chempo",
   "license": "ISC",
   "bugs": {
